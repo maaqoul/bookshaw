@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  api: 'https://www.googleapis.com/books/v1/volumes',
+  api_key: 'AIzaSyAzhMFFsphaM0U5iZfTE3DA7kQH4FxcGhc'
 };
 
 /*
