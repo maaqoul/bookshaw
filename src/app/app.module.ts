@@ -1,10 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import {HttpClientModule} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BookFinderComponent } from './book-finder/book-finder.component';
 import { BookDisplayComponent } from './book-finder/book-display/book-display.component';
+import { BookService } from './book.service';
 
 @NgModule({
   declarations: [
@@ -14,9 +15,10 @@ import { BookDisplayComponent } from './book-finder/book-display/book-display.co
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [BookService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
