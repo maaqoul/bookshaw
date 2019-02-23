@@ -1,13 +1,27 @@
 <div class="row">
-<div class="col-6">
-  <div class="card">
-    <img class="card-img-top" src="https://via.placeholder.com/150" alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">book title</h5>
-      <p class="card-text">author</p>
-      <p class="card-text">published by.</p>
-      <a href="#" class="btn btn-successful">see this book</a>
-    </div>
+  <div style="text-align: center" class="col-12" *ngIf="!booksData && booksData !== 0">
+    <p> <i class="far fa-frown-open"></i> Nothing here yet - try searching for a book</p>
+  </div>
+  <div style="text-align: center" class="col-12" *ngIf="booksData === 0">
+      <p> <i class="far fa-frown-open"></i> Nothing found - try another query</p>
   </div>
 </div>
+<div class="row" *ngIf="booksData && booksData !== 0">
+    <div class="col-6" *ngFor="let book of booksData" >
+        <div class="card">
+          <div class="row no-gutters">
+             <div class="col-4-auto img-wrapper">
+                 <img [src]="book.volumeInfo.imageLinks?.thumbnail" class="img-fluid" alt="">
+               </div>
+               <div class="col custom-card-body">
+                 <div class="card-block">
+                   <h5 >{{book.volumeInfo.title}} {{book.volumeInfo.subtitle ? ' - ' + book.volumeInfo.subtitle : '' }}</h5>
+                   <p>By: {{book.volumeInfo.authors ? book.volumeInfo.authors : 'no author found'}}</p>
+                   <p>published by. {{book.volumeInfo.publisher ? book.volumeInfo.publisher : 'no publisher found'}}</p>
+                   <a [href]="book.volumeInfo.previewLink" class="btn btn-success">see this book</a>
+                 </div>
+               </div>
+          </div>
+        </div> 
+       </div>
 </div>

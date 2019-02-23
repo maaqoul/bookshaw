@@ -20,7 +20,7 @@ export class BookService {
     .set('key', this.api_key);
     return this.http.get(this.url, {params: params})
     .pipe(
-      map((res: any) => res.items)
+      map((res: any) => res.items ? res.items : res.totalItems)
     );
   }
 }
